@@ -10,25 +10,12 @@ namespace UnitTests
         [Test]
         public void Add()
         {
-            Assert.True(Calculator.Add(6, 2) == 6 + 2);
-        }
-        
-        [Test]
-        public void Divide()
-        {
-            Assert.True(Calculator.Divide(2, 2) == 2 / 2);
-        }
-        
-        [Test]
-        public void Subtract()
-        {
-            Assert.True(Calculator.Subtract(6, 2) == 6 - 2);
-        }
-        
-        [Test]
-        public void Multiply()
-        {
-            Assert.True(Calculator.Multiply(6, 2) == 6 * 2);
+            Calendar calendar = new Calendar();
+            calendar.SetUp();
+            DateTime dateTime = DateTime.Now;
+            TodoItem todoItem = new TodoItem() { Wydarzenie = "title", Date = dateTime };
+            calendar.Add_Wydarzenie("title",dateTime);
+            Assert.True(calendar.items[0].Date == todoItem.Date && calendar.items[0].Wydarzenie == todoItem.Wydarzenie);
         }
     }
 }

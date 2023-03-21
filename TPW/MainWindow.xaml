@@ -4,26 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="120" Width="200" MinHeight="120" MinWidth="200">
+        Title="MainWindow" Height="300" Width="400" MinHeight="120" MinWidth="200">
     <Grid VerticalAlignment="Center">
         <StackPanel>
-            <Label HorizontalAlignment="Center">Dodaj liczby do siebie:</Label>
-            <TextBox
-                Name="a"
-                AcceptsReturn="True">
-                0
-            </TextBox>
-            <TextBox
-                Name="b"
-                AcceptsReturn="True">
-                0
-            </TextBox>
+            <Label  VerticalAlignment="Top" HorizontalAlignment="Center">Dodaj date w kalendardzu</Label>
             <StackPanel  HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button Padding="2" Margin="2" Click="Add_Click">Dodaj</Button>
-                <Button Padding="2" Margin="2" Click="Subtract_Click">Odejmij</Button>
-                <Button Padding="2" Margin="2" Click="Divide_Click">Podziel</Button>
-                <Button Padding="2" Margin="2" Click="Multiply_Click">Pomnóż</Button>
+                <DatePicker Height="25" HorizontalAlignment="Left" Margin="42,0,0,0" Name="datePicker" VerticalAlignment="Top" Width="115" />  
+            <TextBox
+                Name="namePicker"
+                AcceptsReturn="True">
+                Wydarzenie
+            </TextBox>
+            <Button Padding="2" Margin="2" Click="Add_Wydarzenie">Dodaj</Button>
             </StackPanel>
+            <Grid Margin="10">
+                <ItemsControl Name="icTodoList">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
+                                        <TextBlock Text="{Binding Wydarzenie}" Margin="2"/>
+                                        <TextBlock Text="{Binding Date}"  Margin="2" />
+                                    </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>
