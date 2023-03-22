@@ -15,6 +15,10 @@ namespace TPW
         {
             items.Add(new TodoItem() { Wydarzenie = title, Date = dateTime });
         }
+        public void Clear_List()
+        {
+            items.Clear();
+        }
     }
 
     public class TodoItem

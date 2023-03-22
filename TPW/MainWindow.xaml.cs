@@ -24,8 +24,19 @@ namespace TPW
         private void Add_Wydarzenie(object sender, RoutedEventArgs e)
         {
            calendar.Add_Wydarzenie(namePicker.Text, datePicker.DisplayDate );
+           Reset_List();
+        }
+        
+        private void Clear_List(object sender, RoutedEventArgs e)
+        {
+            calendar.Clear_List();
+            Reset_List();
+        }
+
+        private void Reset_List()
+        {
             icTodoList.ItemsSource = null;
-            icTodoList.ItemsSource = calendar.items;
+            icTodoList.ItemsSource = calendar.items; 
         }
     }
 }

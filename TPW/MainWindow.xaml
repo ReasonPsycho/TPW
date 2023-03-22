@@ -15,7 +15,8 @@
                 AcceptsReturn="True">
                 Wydarzenie
             </TextBox>
-            <Button Padding="2" Margin="2" Click="Add_Wydarzenie">Dodaj</Button>
+            <Button Padding="2" Margin="2" Click="Add_Wydarzenie">Dodaj wydarzenie</Button>
+                <Button Padding="2" Margin="2" Click="Clear_List">Usuń wydarzenia</Button>
             </StackPanel>
             <Grid Margin="10">
                 <ItemsControl Name="icTodoList">
