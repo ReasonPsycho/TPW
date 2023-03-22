@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TPW
 {
@@ -10,30 +13,30 @@ namespace TPW
     
     public partial class MainWindow
     {
+        public Calendar calendar;
         public MainWindow()
         {
             InitializeComponent();
+            calendar = new Calendar();
+            calendar.SetUp();
         }
         
-       
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void Add_Wydarzenie(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Calculator.Add(float.Parse(a.Text) , float.Parse(b.Text)).ToString()) ;
+           calendar.Add_Wydarzenie(namePicker.Text, datePicker.DisplayDate );
+           Reset_List();
         }
-        private void Divide_Click(object sender, RoutedEventArgs e)
+        
+        private void Clear_List(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show( Calculator.Divide(float.Parse(a.Text) , float.Parse(b.Text)).ToString()) ;
+            calendar.Clear_List();
+            Reset_List();
         }
 
-        private void Subtract_Click(object sender, RoutedEventArgs e)
+        private void Reset_List()
         {
-            MessageBox.Show( Calculator.Subtract(float.Parse(a.Text) , float.Parse(b.Text)).ToString()) ;
-        }
-        private void Multiply_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show( Calculator.Multiply(float.Parse(a.Text) , float.Parse(b.Text)).ToString()) ;
+            icTodoList.ItemsSource = null;
+            icTodoList.ItemsSource = calendar.items; 
         }
     }
-
-   
 }
