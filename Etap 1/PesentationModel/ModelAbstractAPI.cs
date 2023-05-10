@@ -13,7 +13,7 @@ namespace PesentationModel
         public abstract int Width { get; }
         public abstract int Height { get; }
 
-        public abstract ObservableCollection<Ball> CreateBalls(int ballsNumber, int radius);
+        public abstract ObservableCollection<BallLogic> CreateBalls(int ballsNumber, int radius);
         public abstract void CallSimulation();
         public abstract void StopSimulation();
         public abstract int GetBallAmount();
@@ -21,8 +21,8 @@ namespace PesentationModel
     internal class ModelAPILayer : ModelAbstractAPI
     {
         private readonly LogicAbstractAPI logicLayer;
-        public override int Width => logicLayer.Width;
-        public override int Height => logicLayer.Height;
+        public override int Width => logicLayer.Board.Width;
+        public override int Height => logicLayer.Board.Height;
 
         public ModelAPILayer() : this(LogicAbstractAPI.CreateApi()) { }
 
@@ -41,7 +41,7 @@ namespace PesentationModel
             logicLayer.StopSimulation();
         }
 
-        public override ObservableCollection<Ball> CreateBalls(int ballsNumber, int radius)
+        public override ObservableCollection<BallLogic> CreateBalls(int ballsNumber, int radius)
         {
             logicLayer.CreateBalls(ballsNumber, radius);
             return logicLayer.Balls;
@@ -51,8 +51,5 @@ namespace PesentationModel
         {
             return logicLayer.Balls.Count;
         }
-
-
     }
-
 }

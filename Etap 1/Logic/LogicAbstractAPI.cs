@@ -16,12 +16,11 @@ namespace Logic
             return new LogicApi();
         }
 
-        public abstract int Width { get; }
-        public abstract int Height { get; }
-        public abstract ObservableCollection<Ball> Balls { get; }
+        public abstract BoardData Board { get; }
+        public abstract ObservableCollection<BallLogic> Balls { get; }
         public abstract void RunSimulation();
         public abstract void StopSimulation();
-        public abstract Ball CreateBall(Vector2 pos, int radius);
+        public abstract BallLogic CreateBall(Vector2 pos, int radius);
         public abstract void CreateBalls(int count, int radius);
         public abstract void DeleteBalls();
     }

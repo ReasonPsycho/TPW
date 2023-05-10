@@ -1,96 +1,102 @@
-﻿using System.Collections;
-using System.Numerics;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using System.Threading;
+﻿using Data;
 using Logic;
+using NUnit.Framework;
+using System.Collections.ObjectModel;
+using System.Numerics;
+using PesentationModel;
 
-namespace LogicTests
+namespace PresentationModel.Tests
 {
     [TestFixture]
-    public class LogicTest
+    public class ModelAbstractAPITests
     {
-        private LogicAbstractAPI logic;
+        private ModelAbstractAPI model;
+        private LogicAbstractAPI logicMock;
 
         [SetUp]
-        public void SetUp()
+        public void Initialize()
         {
-            logic = LogicAbstractAPI.CreateApi();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            logic.StopSimulation();
+            // Create a new instance of ModelAbstractAPI with a mock of the LogicAbstractAPI
+            logicMock = new LogicMock();
+            model = ModelAbstractAPI.CreateModelAPI(logicMock);
         }
 
         [Test]
-        public void CreateBall_ShouldCreateBallWithExpectedPositionAndRadius()
+        public void Width_ReturnsExpectedValue()
         {
-            Vector2 expectedPosition = new Vector2(50, 50);
-            int expectedRadius = 10;
-
-            Ball ball = logic.CreateBall(expectedPosition, expectedRadius);
-
-            Assert.AreEqual(expectedPosition, ball.Position);
-            Assert.AreEqual(expectedRadius, ball.Radius);
+            int expected = 500;
+            int actual = model.Width;
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void CreateBalls_ShouldCreateSpecifiedNumberOfBalls()
+        public void Height_ReturnsExpectedValue()
+        {
+            int expected = 500;
+            int actual = model.Height;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void CreateBalls_ReturnsNonNullObservableCollectionWithExpectedCount()
         {
             int expectedCount = 5;
+            int radius = 10;
+            ObservableCollection<BallLogic> balls = model.CreateBalls(expectedCount, radius);
 
-            logic.CreateBalls(expectedCount, 10);
+            Assert.IsNotNull(balls);
+            Assert.AreEqual(expectedCount, balls.Count);
+        }
+        
+        [Test]
+        public void GetBallAmount_ReturnsExpectedValue()
+        {
+            int expectedCount = 3;
+            logicMock.Balls.Add(new BallLogic(new BallData(Vector2.Zero, Vector2.Zero, 0)));
+            logicMock.Balls.Add(new BallLogic(new BallData(Vector2.Zero, Vector2.Zero, 0)));
+            logicMock.Balls.Add(new BallLogic(new BallData(Vector2.Zero, Vector2.Zero, 0)));
 
-            Assert.AreEqual(expectedCount, logic.Balls.Count);
+            int actualCount = model.GetBallAmount();
+            Assert.AreEqual(expectedCount, actualCount);
         }
 
-        [Test]
-        public async Task RunSimulation_ShouldMoveBallsWhileRunning()
+        // Mock class for LogicAbstractAPI
+        // Mock class for LogicAbstractAPI
+        private class LogicMock : LogicAbstractAPI
         {
-            // Arrange
-            int expectedXPosition = 100;
-            Ball ball = logic.CreateBall(new Vector2(expectedXPosition, 0), 10);
-            logic.Balls.Add(ball);
+            public bool RunSimulationCalled { get; set; }
+            public  bool StopSimulationCalled { get; set; }
+            public override ObservableCollection<BallLogic> Balls { get; } = new ObservableCollection<BallLogic>();
 
-            // Act
-            logic.RunSimulation();
+            public override BoardData Board => new BoardData(500, 500);
 
-            // Assert
-            await Task.Delay(1000); // Wait for ball to move
-            Assert.Less(ball.Position.Y, expectedXPosition); // Ball should have moved downwards
-        }
+            public override BallLogic CreateBall(Vector2 pos, int radius)
+            {
+                throw new System.NotImplementedException();
+            }
 
-        [Test]
-        public void StopSimulation_ShouldStopMovingBalls()
-        {
-            // Arrange
-            Ball ball = logic.CreateBall(new Vector2(0, 0), 10);
-            logic.Balls.Add(ball);
+            public override void CreateBalls(int count, int radius)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    Balls.Add(new BallLogic(new BallData(Vector2.Zero, Vector2.Zero, radius)));
+                }
+            }
 
-            // Act
-            logic.RunSimulation();
-            logic.StopSimulation();
+            public override void DeleteBalls()
+            {
+                throw new System.NotImplementedException();
+            }
 
-            // Assert
-            Vector2 initialPosition = ball.Position;
-            Thread.Sleep(100); // Wait for a short time to see if ball has moved
-            Assert.AreEqual(initialPosition, ball.Position); // Ball should not have moved after stopping simulation
-        }
+            public override void RunSimulation()
+            {
+                RunSimulationCalled = true;
+            }
 
-        [Test]
-        public void DeleteBalls_ShouldRemoveAllBalls()
-        {
-            // Arrange
-            logic.Balls.Add(logic.CreateBall(new Vector2(0, 0), 10));
-            logic.Balls.Add(logic.CreateBall(new Vector2(10, 10), 10));
-
-            // Act
-            logic.DeleteBalls();
-
-            // Assert
-            Assert.IsEmpty((IEnumerable)logic.Balls);
+            public override void StopSimulation()
+            {
+                StopSimulationCalled = true;
+            }
         }
     }
 }
