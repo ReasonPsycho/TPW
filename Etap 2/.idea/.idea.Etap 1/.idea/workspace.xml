@@ -7,47 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e819e2bf-e7db-4c96-8c26-f2c9d71bd3ad" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Etap 1/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/BallData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/BoardData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/Data.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/DataAbstractAPI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataTest/DataTest.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataTest/DataTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataTests/DataAbstractAPITests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataTests/DataTests.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Etap 1.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Etap 2.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Logic/BallLogic.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Logic/Logic.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Logic/LogicAbstractAPI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Logic/LogicApi.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LogicTest/LogicTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LogicTest/LogicTest.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LogicTests/DataSimulation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LogicTests/LogicAbstractAPITests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LogicTests/LogicTests.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PesentationModel/ModelAbstractAPI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PesentationModel/PesentationModel.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationView/App.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationView/App.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationView/AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationView/MainWindow.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationView/MainWindow.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationView/PresentationView.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationViewModel/PresentationViewModel.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationViewModel/RelayCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationViewModel/ViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PresentationViewModel/ViewModelSetUp.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestProject1/TestProject1.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestProject1/UnitTest1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestProject1/Usings.cs" afterDir="false" />
+    <list default="true" id="e819e2bf-e7db-4c96-8c26-f2c9d71bd3ad" name="Changes" comment="Initial commit Etap 2">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Etap 1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Etap 1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logic/BallLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/BallLogic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logic/LogicApi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/LogicApi.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +32,9 @@
     <setting file="mock://C:/Users/redkc/RiderProjects/TPW/Etap 1/PesentationModel/ModelAbstractAPI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TestProject1/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TestProject1/Usings.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2Oxz492mvau45Xq145gA6w4CVK2" />
@@ -130,7 +96,7 @@
       <workItem from="1682974541907" duration="109000" />
       <workItem from="1683703282354" duration="6393000" />
       <workItem from="1683731833751" duration="801000" />
-      <workItem from="1684262752680" duration="4096000" />
+      <workItem from="1684262752680" duration="5494000" />
     </task>
     <task id="LOCAL-00001" summary="Moving logic into data layer">
       <created>1683709325360</created>
@@ -139,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683709325360</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial commit Etap 2">
+      <created>1684267363013</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684267363013</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +145,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Moving logic into data layer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moving logic into data layer" />
+    <MESSAGE value="Initial commit Etap 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit Etap 2" />
   </component>
 </project>

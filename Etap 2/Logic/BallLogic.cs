@@ -34,23 +34,25 @@ public class BallLogic : INotifyPropertyChanged
         _boardData = boardData;
     }
 
-    public bool CollidesWith(BallLogic other)
-    {
-        Vector2 distance = new Vector2(other.X,other.Y) - new Vector2(this.X,this.Y);
-        float radiiSum = other.Radius/2 + this.Radius/2;
+ public bool CollidesWith(BallLogic other)
+{
+    Vector2 distance = new Vector2(other.X, other.Y) - new Vector2(this.X, this.Y);
+    float separationDistance = 2; // adjust as needed
+    float radiiSum = (other.Radius / 2) + (this.Radius / 2) + separationDistance;
 
-        return distance.LengthSquared() <= radiiSum * radiiSum;
-    }
-    
-    public void HandleCollision(BallLogic other)
-    {
-        Vector2 collisionNormal = Vector2.Normalize(new Vector2(other.X,other.Y)  - new Vector2(this.X,this.Y));
-        Vector2 relativeVelocity = other.Velocity - this.Velocity;
-        float impulseMagnitude = 2 * this.Weight * other.Weight * Vector2.Dot(relativeVelocity, collisionNormal) / (this.Weight + other.Weight);
+    return distance.LengthSquared() <= radiiSum * radiiSum;
+}
+ 
+ public void HandleCollision(BallLogic other)
+ {
+     Vector2 collisionNormal = Vector2.Normalize(new Vector2(other.X,other.Y)  - new Vector2(this.X,this.Y));
+     Vector2 relativeVelocity = other.Velocity - this.Velocity;
+     float impulseMagnitude = 2 * this.Weight * other.Weight * Vector2.Dot(relativeVelocity, collisionNormal) / (this.Weight + other.Weight);
             
-        other.Velocity -= impulseMagnitude / other.Weight * collisionNormal;
-        this.Velocity += impulseMagnitude / this.Weight * collisionNormal;
-    }
+     other.Velocity -= impulseMagnitude / other.Weight * collisionNormal;
+     this.Velocity += impulseMagnitude / this.Weight * collisionNormal;
+ }
+
     
     public event PropertyChangedEventHandler PropertyChanged;
 
