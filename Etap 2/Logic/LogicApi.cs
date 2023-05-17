@@ -45,7 +45,6 @@
                     break;
                 }
 
-                HashSet<BallLogic[]> alreadyCollidedPairs = new HashSet<BallLogic[]>();
 
 
                 // Check for collisions with other balls
@@ -54,13 +53,10 @@
                     foreach (BallLogic otherBall in Balls)
                     {
                         if (ball == otherBall) continue;
-                        if (alreadyCollidedPairs.Contains(new[] { ball, otherBall })) continue;
-                        
                         if (ball.CollidesWith(otherBall))
                         {
                             // Handle collision, e.g. change velocity or position of both balls
                             ball.HandleCollision(otherBall);
-                            alreadyCollidedPairs.Add(new[] { ball, otherBall });
                         }
                     }
                 }
