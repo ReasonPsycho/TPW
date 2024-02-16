@@ -1,3 +1,7 @@
+# Programowanie współbieżne (Concurrent programming) 
+
+Project created at course called "Concurrent programming" at Lodz University of Technology. Leaving it be for a future generations.
+
 ## Working Group
 
 | Name Surname (initials)   | GUID                                     |
